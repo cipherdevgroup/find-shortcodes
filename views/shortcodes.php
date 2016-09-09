@@ -47,7 +47,7 @@ $shortcode = empty( $data['sitecare_fsc_shortcode'] ) ? '' : $data['sitecare_fsc
 								<p>
 									<code><?php echo $post_id; ?></code> -
 									<a target="_blank" href="<?php echo get_permalink( $post_id ); ?>">
-										<?php get_the_title( $post_id ); ?>
+										<?php echo get_the_title( $post_id ); ?>
 									</a>
 								</p>
 							</li>
