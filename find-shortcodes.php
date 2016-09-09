@@ -62,7 +62,7 @@ if ( is_admin() ) {
 		$ids_with_shortcodes = array();
 
 		foreach ( $posts as $post_id ) {
-			$content = get_post_field( 'post_content', $post_id );
+			$content = wp_strip_all_tags( get_post_field( 'post_content', $post_id ) );
 
 			if ( has_shortcode( $content, $shortcode ) ) {
 				$ids_with_shortcodes[] = $post_id;
