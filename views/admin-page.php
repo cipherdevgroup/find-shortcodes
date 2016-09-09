@@ -38,7 +38,7 @@ $shortcode = empty( $data['sitecare_fsc_shortcode'] ) ? '' : $data['sitecare_fsc
 
 			<?php if ( $posts = sitecare_fsc_get_posts_with_shortcode( esc_attr( $shortcode ) ) ) : ?>
 
-				<h2>Posts with the <?php echo esc_attr( $shortcode ); ?> Shortcode</h2>
+				<h2>Posts with the <code><?php echo esc_attr( $shortcode ); ?></code> Shortcode</h2>
 
 					<ul>
 						<?php foreach ( $posts as $post_id ) : ?>
