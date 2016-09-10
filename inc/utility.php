@@ -155,10 +155,6 @@ function scfsc_get_meta_shortcodes_ids( $shortcode ) {
 	foreach ( $posts as $post_id ) {
 		$meta = get_post_meta( $post_id );
 
-		if ( ! is_array( $meta ) ) {
-			continue;
-		}
-
 		foreach ( $meta as $key => $content ) {
 			if ( is_array( $content ) ) {
 				foreach ( $content as $content_item ) {
