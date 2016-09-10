@@ -127,7 +127,7 @@ function scfsc_get_content_shortcodes_ids( $shortcode ) {
 	$ids_with_shortcodes = array();
 
 	foreach ( $posts as $post_id ) {
-		$content = wp_strip_all_tags( get_post_field( 'post_content', $post_id ) );
+		$content = get_post_field( 'post_content', $post_id );
 
 		if ( scfsc_has_shortcode( $content, $shortcode ) ) {
 			$ids_with_shortcodes[] = $post_id;
@@ -162,13 +162,13 @@ function scfsc_get_meta_shortcodes_ids( $shortcode ) {
 		foreach ( $meta as $key => $content ) {
 			if ( is_array( $content ) ) {
 				foreach ( $content as $content_item ) {
-					if ( is_string( $content_item ) && scfsc_has_shortcode( wp_strip_all_tags( $content_item ), $shortcode ) ) {
+					if ( is_string( $content_item ) && scfsc_has_shortcode( $content_item, $shortcode ) ) {
 						$ids_with_shortcodes[] = $post_id;
 						continue;
 					}
 				}
 			} elseif ( is_string( $content ) ) {
-				if ( scfsc_has_shortcode( wp_strip_all_tags( $content ), $shortcode ) ) {
+				if ( scfsc_has_shortcode( $content, $shortcode ) ) {
 					$ids_with_shortcodes[] = $post_id;
 				}
 			}
