@@ -19,7 +19,7 @@ function scfsc_get_posts() {
 	static $posts;
 
 	if ( null === $posts ) {
-		$types = get_post_types( array(), 'names' );
+		$types = get_post_types();
 
 		unset( $types['revision'] );
 
