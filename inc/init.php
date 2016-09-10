@@ -10,4 +10,4 @@
 
 defined( 'WPINC' ) || die;
 
-add_action( 'admin_menu', 'sitecare_fsc_admin_page', 20 );
+add_action( 'admin_menu', 'scfsc_admin_page', 20 );

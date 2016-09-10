@@ -21,9 +21,9 @@
  * @since 0.1.0
  * @uses  plugin_dir_path()
  */
-define( 'SITECARE_FSC_DIR', plugin_dir_path( __FILE__ ) );
+define( 'SCFSC_DIR', plugin_dir_path( __FILE__ ) );
 
-add_action( 'plugins_loaded', 'sitecare_fsc_load_plugin', 99 );
+add_action( 'plugins_loaded', 'scfsc_load_plugin', 99 );
 /**
  * Load the plugin.
  *
@@ -31,10 +31,10 @@ add_action( 'plugins_loaded', 'sitecare_fsc_load_plugin', 99 );
  * @access public
  * @return void
  */
-function sitecare_fsc_load_plugin() {
+function scfsc_load_plugin() {
 	if ( is_admin() ) {
-		require_once SITECARE_FSC_DIR . 'inc/template.php';
-		require_once SITECARE_FSC_DIR . 'inc/utility.php';
-		require_once SITECARE_FSC_DIR . 'inc/init.php';
+		require_once SCFSC_DIR . 'inc/template.php';
+		require_once SCFSC_DIR . 'inc/utility.php';
+		require_once SCFSC_DIR . 'inc/init.php';
 	}
 }

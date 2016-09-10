@@ -15,7 +15,7 @@
  * @access public
  * @return array
  */
-function sitecare_fsc_get_posts() {
+function scfsc_get_posts() {
 	static $posts;
 
 	if ( null === $posts ) {
@@ -52,7 +52,7 @@ function sitecare_fsc_get_posts() {
  * @since  0.1.0
  * @return string The regexp for finding shortcodes in a text
  */
-function sitecare_fsc_shortcode_regex() {
+function scfsc_shortcode_regex() {
 	$tagregexp = '[a-zA-Z_\-][0-9a-zA-Z_\-\+]{2,}';
 
 	// WARNING! Do not change this regex without changing do_shortcode_tag()
@@ -100,12 +100,12 @@ function sitecare_fsc_shortcode_regex() {
  * @param string $tag     Shortcode tag to check.
  * @return bool Whether the passed content contains the given shortcode.
  */
-function sitecare_fsc_has_shortcode( $content, $tag ) {
+function scfsc_has_shortcode( $content, $tag ) {
 	if ( false === strpos( $content, '[' ) ) {
 		return false;
 	}
 
-	preg_match_all( '/' . sitecare_fsc_shortcode_regex() . '/', $content, $matches, PREG_SET_ORDER );
+	preg_match_all( '/' . scfsc_shortcode_regex() . '/', $content, $matches, PREG_SET_ORDER );
 
 	if ( empty( $matches ) ) {
 		return false;
@@ -114,7 +114,7 @@ function sitecare_fsc_has_shortcode( $content, $tag ) {
 	foreach ( $matches as $shortcode ) {
 		if ( $tag === $shortcode[2] ) {
 			return true;
-		} elseif ( ! empty( $shortcode[5] ) && sitecare_fsc_has_shortcode( $shortcode[5], $tag ) ) {
+		} elseif ( ! empty( $shortcode[5] ) && scfsc_has_shortcode( $shortcode[5], $tag ) ) {
 			return true;
 		}
 	}
@@ -130,8 +130,8 @@ function sitecare_fsc_has_shortcode( $content, $tag ) {
  * @param  string $shortcode The shortcode to check for.
  * @return array
  */
-function sitecare_fsc_get_post_content_with_shortcode( $shortcode ) {
-	if ( ! $posts = sitecare_fsc_get_posts() ) {
+function scfsc_get_content_shortcodes_ids( $shortcode ) {
+	if ( ! $posts = scfsc_get_posts() ) {
 		return false;
 	}
 
@@ -140,7 +140,7 @@ function sitecare_fsc_get_post_content_with_shortcode( $shortcode ) {
 	foreach ( $posts as $post_id ) {
 		$content = wp_strip_all_tags( get_post_field( 'post_content', $post_id ) );
 
-		if ( sitecare_fsc_has_shortcode( $content, $shortcode ) ) {
+		if ( scfsc_has_shortcode( $content, $shortcode ) ) {
 			$ids_with_shortcodes[] = $post_id;
 		}
 	}
@@ -156,8 +156,8 @@ function sitecare_fsc_get_post_content_with_shortcode( $shortcode ) {
  * @param  string $shortcode The shortcode to check for.
  * @return array
  */
-function sitecare_fsc_get_post_meta_with_shortcode( $shortcode ) {
-	if ( ! $posts = sitecare_fsc_get_posts() ) {
+function scfsc_get_meta_shortcodes_ids( $shortcode ) {
+	if ( ! $posts = scfsc_get_posts() ) {
 		return false;
 	}
 
@@ -173,13 +173,13 @@ function sitecare_fsc_get_post_meta_with_shortcode( $shortcode ) {
 		foreach ( $meta as $key => $content ) {
 			if ( is_array( $content ) ) {
 				foreach ( $content as $content_item ) {
-					if ( sitecare_fsc_has_shortcode( wp_strip_all_tags( $content_item ), $shortcode ) ) {
+					if ( scfsc_has_shortcode( wp_strip_all_tags( $content_item ), $shortcode ) ) {
 						$ids_with_shortcodes[] = $post_id;
 						continue;
 					}
 				}
 			} elseif ( is_string( $content ) ) {
-				if ( sitecare_fsc_has_shortcode( wp_strip_all_tags( $content ), $shortcode ) ) {
+				if ( scfsc_has_shortcode( wp_strip_all_tags( $content ), $shortcode ) ) {
 					$ids_with_shortcodes[] = $post_id;
 				}
 			}

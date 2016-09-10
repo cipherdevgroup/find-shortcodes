@@ -9,7 +9,7 @@
  */
 
 ?>
-<div id="found-shortcodes-post-meta" class="found-shortcodes-post-meta scfs-one-half scfs-last">
+<div id="found-shortcodes-post-meta" class="found-shortcodes-post-meta scfsc-one-half scfsc-last">
 
 	<h2>Posts with the <code><?php echo esc_attr( $shortcode ); ?></code> shortcode in a post meta field</h2>
 

@@ -15,13 +15,13 @@
  * @access public
  * @return void
  */
-function sitecare_fsc_admin_page() {
+function scfsc_admin_page() {
 	add_management_page(
 		'Shortcodes',
 		'Shortcodes',
 		'manage_options',
 		'sc-find-shortcodes-admin',
-		'sitecare_fsc_admin_page_template'
+		'scfsc_admin_page_template'
 	);
 }
 
@@ -32,14 +32,14 @@ function sitecare_fsc_admin_page() {
  * @access public
  * @return void
  */
-function sitecare_fsc_admin_page_template() {
+function scfsc_admin_page_template() {
 	$data = false;
 
-	if ( ! empty( $_POST ) && check_admin_referer( 'find_shortcode', 'sitecare_fsc_submit_form' ) ) {
+	if ( ! empty( $_POST ) && check_admin_referer( 'find_shortcode', 'scfsc_submit_form' ) ) {
 		$data = wp_unslash( $_POST );
 	}
 
-	$shortcode = empty( $data['sitecare_fsc_shortcode'] ) ? '' : $data['sitecare_fsc_shortcode'];
+	$shortcode = empty( $data['scfsc_shortcode'] ) ? '' : sanitize_key( $data['scfsc_shortcode'] );
 
-	require_once SITECARE_FSC_DIR . 'views/admin-page.php';
+	require_once SCFSC_DIR . 'views/admin-page.php';
 }

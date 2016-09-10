@@ -11,13 +11,13 @@
 ?>
 <style>
 @media only screen and (min-width: 810px) {
-  .scfs-one-half {
+  .scfsc-one-half {
 	width: 47.3684210526%;
 	float: left;
 	margin-right: 5.2631578947%;
   }
 
-  .scfs-last {
+  .scfsc-last {
 	float: right;
 	margin-right: 0;
   }
@@ -28,21 +28,21 @@
 
 	<h1>Find Shortcodes</h1>
 
-	<?php require_once SITECARE_FSC_DIR . 'views/form.php'; ?>
+	<?php require_once SCFSC_DIR . 'views/form.php'; ?>
 
 	<?php if ( ! empty( $shortcode ) ) : ?>
 
 		<section id="found-shortcodes-container" class="found-shortcodes-container">
 
-			<?php if ( $posts = sitecare_fsc_get_post_content_with_shortcode( esc_attr( $shortcode ) ) ) : ?>
+			<?php if ( $posts = scfsc_get_content_shortcodes_ids( esc_attr( $shortcode ) ) ) : ?>
 
-				<?php require_once SITECARE_FSC_DIR . 'views/post-shortcodes.php'; ?>
+				<?php require_once SCFSC_DIR . 'views/post-shortcodes.php'; ?>
 
 			<?php endif; ?>
 
-			<?php if ( $meta = sitecare_fsc_get_post_meta_with_shortcode( esc_attr( $shortcode ) ) ) : ?>
+			<?php if ( $meta = scfsc_get_meta_shortcodes_ids( esc_attr( $shortcode ) ) ) : ?>
 
-				<?php require_once SITECARE_FSC_DIR . 'views/meta-shortcodes.php'; ?>
+				<?php require_once SCFSC_DIR . 'views/meta-shortcodes.php'; ?>
 
 			<?php endif; ?>
 
