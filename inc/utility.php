@@ -19,23 +19,12 @@ function scfsc_get_posts() {
 	static $posts;
 
 	if ( null === $posts ) {
-		$types = get_post_types(
-			array(
-				'_builtin' => true,
-				'public'   => true,
-			),
-			'names'
-		);
+		$types = get_post_types( array(), 'names' );
 
-		$custom_types = get_post_types(
-			array(
-				'_builtin' => false,
-			),
-			'names'
-		);
+		unset( $types['revision'] );
 
 		$posts = get_posts( array(
-			'post_type'   => array_merge( $types, $custom_types ),
+			'post_type'   => $types,
 			'post_status' => 'any',
 			'numberposts' => -1,
 			'fields'      => 'ids',
