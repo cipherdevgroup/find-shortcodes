@@ -162,7 +162,7 @@ function scfsc_get_meta_shortcodes_ids( $shortcode ) {
 		foreach ( $meta as $key => $content ) {
 			if ( is_array( $content ) ) {
 				foreach ( $content as $content_item ) {
-					if ( scfsc_has_shortcode( wp_strip_all_tags( $content_item ), $shortcode ) ) {
+					if ( is_string( $content_item ) && scfsc_has_shortcode( wp_strip_all_tags( $content_item ), $shortcode ) ) {
 						$ids_with_shortcodes[] = $post_id;
 						continue;
 					}
