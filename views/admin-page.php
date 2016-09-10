@@ -8,61 +8,53 @@
  * @since     0.1.0
  */
 
-$shortcode = empty( $data['sitecare_fsc_shortcode'] ) ? '' : $data['sitecare_fsc_shortcode'];
 ?>
+<style>
+@media only screen and (min-width: 810px) {
+  .scfs-one-half {
+	width: 47.3684210526%;
+	float: left;
+	margin-right: 5.2631578947%;
+  }
+
+  .scfs-last {
+	float: right;
+	margin-right: 0;
+  }
+}
+</style>
+
 <div id="sc-find-shortcodes" class="wrap sc-find-shortcodes">
+
 	<h1>Find Shortcodes</h1>
 
-	<form method="post" class="shortcode-search-form">
-		<table class="form-table">
-			<tbody>
-				<tr>
-					<th scope="row"><label for="sitecare_fsc_shortcode">Shortcode</label></th>
-					<td><input name="sitecare_fsc_shortcode" id="sitecare_fsc_shortcode" value="<?php echo esc_attr( $shortcode ); ?>" class="regular-text" type="text"></td>
-				</tr>
-			</tbody>
-		</table>
-
-		<p class="submit">
-			<button type="submit" name="sitecare_fsc_submit" id="submit" class="button button-primary" >
-				<?php esc_html_e( 'Search for Shortcode' ); ?>
-			</button>
-		</p>
-
-		<?php wp_nonce_field( 'find_shortcode', 'sitecare_fsc_submit_form' ); ?>
-	</form>
+	<?php require_once SITECARE_FSC_DIR . 'views/form.php'; ?>
 
 	<?php if ( ! empty( $shortcode ) ) : ?>
 
-		<section id="found-shortcodes-content" class="found-shortcodes-content">
+		<section id="found-shortcodes-container" class="found-shortcodes-container">
 
-			<?php if ( $posts = sitecare_fsc_get_posts_with_shortcode( esc_attr( $shortcode ) ) ) : ?>
+			<?php if ( $posts = sitecare_fsc_get_post_content_with_shortcode( esc_attr( $shortcode ) ) ) : ?>
 
-				<h2>Posts with the <code><?php echo esc_attr( $shortcode ); ?></code> Shortcode</h2>
-
-					<ul>
-						<?php foreach ( $posts as $post_id ) : ?>
-
-							<li>
-								<p>
-									<code><?php echo $post_id; ?></code> -
-									<a target="_blank" href="<?php echo get_permalink( $post_id ); ?>">
-										<?php echo get_the_title( $post_id ); ?>
-									</a>
-								</p>
-							</li>
-
-						<?php endforeach; ?>
-					</ul>
-
-			<?php else : ?>
-
-				<h2>No posts with the <?php echo esc_attr( $shortcode ); ?> Shortcode could be found.</h2>
+				<?php require_once SITECARE_FSC_DIR . 'views/post-shortcodes.php'; ?>
 
 			<?php endif; ?>
 
-		</section><!-- #found-shortcodes-content -->
+			<?php if ( $meta = sitecare_fsc_get_post_meta_with_shortcode( esc_attr( $shortcode ) ) ) : ?>
+
+				<?php require_once SITECARE_FSC_DIR . 'views/meta-shortcodes.php'; ?>
+
+			<?php endif; ?>
+
+			<?php if ( ! $posts && ! $meta ) : ?>
+
+				<h2>No posts with the <?php echo esc_attr( $shortcode ); ?> shortcode could be found.</h2>
+
+			<?php endif; ?>
+
+		</section><!-- #found-shortcodes-container -->
 
 	<?php endif; ?>
+
 
 </div><!-- #sc-find-shortcodes -->
