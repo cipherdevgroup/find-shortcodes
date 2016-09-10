@@ -19,7 +19,7 @@
 			<li>
 				<p>
 					<code><?php echo $post_id; ?></code> -
-					<a target="_blank" href="<?php echo get_permalink( $post_id ); ?>">
+					<a target="_blank" href="<?php echo get_edit_post_link( $post_id ); ?>">
 						<?php echo get_the_title( $post_id ); ?>
 					</a>
 				</p>
