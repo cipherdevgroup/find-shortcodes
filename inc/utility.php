@@ -134,7 +134,7 @@ function scfsc_get_content_shortcodes_ids( $shortcode ) {
 		}
 	}
 
-	return empty( $ids_with_shortcodes ) ? false : $ids_with_shortcodes;
+	return empty( $ids_with_shortcodes ) ? false : array_unique( $ids_with_shortcodes );
 }
 
 /**
@@ -175,5 +175,5 @@ function scfsc_get_meta_shortcodes_ids( $shortcode ) {
 		}
 	}
 
-	return empty( $ids_with_shortcodes ) ? false : $ids_with_shortcodes;
+	return empty( $ids_with_shortcodes ) ? false : array_unique( $ids_with_shortcodes );
 }
