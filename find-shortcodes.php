@@ -15,6 +15,8 @@
  * @since     0.1.0
  */
 
+defined( 'WPINC' ) || die;
+
 /**
  * The absolute path to the plugin's root directory with a trailing slash.
  *
