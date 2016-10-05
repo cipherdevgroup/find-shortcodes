@@ -11,16 +11,16 @@
 ?>
 <style>
 @media only screen and (min-width: 810px) {
-  .scfsc-one-half {
-	width: 47.3684210526%;
-	float: left;
-	margin-right: 5.2631578947%;
-  }
+	.scfsc-one-half {
+		width: 47.3684210526%;
+		float: left;
+		margin-right: 5.2631578947%;
+	}
 
-  .scfsc-last {
-	float: right;
-	margin-right: 0;
-  }
+	.scfsc-last {
+		float: right;
+		margin-right: 0;
+	}
 }
 </style>
 
