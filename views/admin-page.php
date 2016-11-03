@@ -10,6 +10,17 @@
 
 ?>
 <style>
+.scfsc-title {
+	font-size: 14px;
+	padding: 8px 12px;
+	margin: 0;
+	line-height: 1.4;
+}
+
+.scfsc-post-id {
+	width: 10%;
+}
+
 @media only screen and (min-width: 810px) {
 	.scfsc-one-half {
 		width: 47.3684210526%;
@@ -20,17 +31,6 @@
 	.scfsc-last {
 		float: right;
 		margin-right: 0;
-	}
-
-	.scfsc-title {
-		font-size: 14px;
-		padding: 8px 12px;
-		margin: 0;
-		line-height: 1.4;
-	}
-
-	.scfsc-post-id {
-		width: 10%;
 	}
 }
 </style>
