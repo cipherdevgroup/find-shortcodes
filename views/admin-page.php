@@ -21,6 +21,17 @@
 		float: right;
 		margin-right: 0;
 	}
+
+	.scfsc-title {
+		font-size: 14px;
+		padding: 8px 12px;
+		margin: 0;
+		line-height: 1.4;
+	}
+
+	.scfsc-post-id {
+		width: 10%;
+	}
 }
 </style>
 

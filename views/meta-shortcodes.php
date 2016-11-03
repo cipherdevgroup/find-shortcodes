@@ -9,23 +9,45 @@
  */
 
 ?>
-<div id="found-shortcodes-post-meta" class="found-shortcodes-post-meta scfsc-one-half scfsc-last">
+<div id="found-shortcodes-post-meta" class="found-shortcodes-post-meta scfsc-one-half scfsc-last postbox">
 
-	<h2>Posts with the <code><?php echo esc_attr( $shortcode ); ?></code> shortcode in a post meta field</h2>
+	<h3 class="scfsc-title">
+		Posts With the <code><?php echo esc_attr( $shortcode ); ?></code> Shortcode in a Post Meta Field
+	</h3>
 
-	<ul>
-		<?php foreach ( $meta as $post_id ) : ?>
+	<table class="widefat fixed striped posts">
+		<thead>
+			<tr>
+				<th scope="col" id="title" class="manage-column column-title column-primary scfsc-post-id">
+					<span>ID</span>
+				</th>
 
-			<li>
-				<p>
-					<code><?php echo $post_id; ?></code> -
-					<a target="_blank" href="<?php echo get_edit_post_link( $post_id ); ?>">
-						<?php echo get_the_title( $post_id ); ?>
-					</a>
-				</p>
-			</li>
+				<th scope="col" id="title" class="manage-column column-title column-primary">
+					<span>Title</span>
+				</th>
+			</tr>
+		</thead>
 
-		<?php endforeach; ?>
-	</ul>
+		<tbody id="the-list">
+
+			<?php foreach ( $posts as $post_id ) : ?>
+
+				<tr>
+					<td class="scfsc-post-id">
+						<code><?php echo $post_id; ?></code>
+					</td>
+
+					<td class="scfsc-post-link">
+						<a target="_blank" href="<?php echo get_edit_post_link( $post_id ); ?>">
+							<?php echo get_the_title( $post_id ); ?>
+						</a>
+					</td>
+
+				</tr>
+
+			<?php endforeach; ?>
+
+		</tbody>
+	</table>
 
 </div><!-- #found-shortcodes-post-meta -->
